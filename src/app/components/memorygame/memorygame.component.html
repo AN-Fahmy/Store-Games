@@ -1,0 +1,53 @@
+<div class="background">
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+</div>
+
+<section class="text-center text-white">
+  <div class="container position-relative">
+    <button class="exit btn btn-outline-danger d-flex align-items-center justify-content-center px-2 position-absolute z-3" routerLink="/home">
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-arrow-bar-left" viewBox="0 0 16 16">
+        <path fill-rule="evenodd" d="M12.5 15a.5.5 0 0 1-.5-.5v-13a.5.5 0 0 1 1 0v13a.5.5 0 0 1-.5.5M10 8a.5.5 0 0 1-.5.5H3.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L3.707 7.5H9.5a.5.5 0 0 1 .5.5"/>
+      </svg>
+      Exit
+    </button>
+    <div class="vh-100 d-flex justify-content-center align-items-center flex-column animate__animated animate__backInDown">
+      <h1 class="animate__animated animate__backInDown">Memory Game</h1>
+      <h4 class="animate__animated animate__fadeInLeft animate__delay-1s">Level : {{level()}}</h4>
+      <div #cardContainer class="card-container my-3">
+        @for(card of cards(); track $index){
+          <div class="cards" (click)="revealedCards($index)">
+            <div class="card" [ngClass]="{'rotateCard': card.revealed}">
+              <div class="frontCard rounded-3"><img src="./assets/images/memorygameImage/simbol.gif" class="w-50" alt=""></div>
+              <div class="backCard rounded-3">
+                @if(card.revealed){
+                  <img [src]="card.value" class="w-100 h-100" alt="Animals">
+                }
+              </div>
+            </div>
+          </div>
+        }
+      </div>
+      <h4 class="animate__animated animate__fadeInDown animate__delay-2s">Attempts: {{attempts()}}</h4>
+    </div>
+  </div>
+
+</section>
