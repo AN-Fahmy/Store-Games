@@ -2,37 +2,22 @@
   transition: all .7s;
   font-family: "Caveat", cursive;
 }
-h4{
-  font-family: "Josefin Sans", sans-serif;
-}
 .card-container{
-  display: grid;
   grid-template-columns: repeat(2,100px);
-  gap: 15px;
   place-content: center;
-  box-shadow: 0 0 8px 8px #fff;
-  padding: 50px;
-  border-radius: 20px;
   .cards{
     perspective: 1000px;
     .card{
-      width: 100px;
-      height: 100px;
+      width: 6.25rem;
+      height: 6.25rem;
       transform-style: preserve-3d;
       position: relative;
-      font-size: 2rem;
       cursor: pointer;
       box-shadow: 0 0 8px 3px #ffffff7c;
       .frontCard, .backCard{
         position: absolute;
-        width: 100%;
-        height: 100%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
         background: #000;
         backface-visibility: hidden;
-        color: #fff;
       }
       .backCard{
         transform: rotateY(180deg);
@@ -43,16 +28,14 @@ h4{
     }
   }
 }
-
 .rotateCard{
   transform: rotateY(180deg);
 }
-
 .exit{
+  position: relative;
   top: 20px;
   font-family: "Playwrite DE Grund", cursive;
 }
-
 .background {
   position: fixed;
   width: 100vw;
@@ -257,5 +240,10 @@ h4{
 @keyframes move {
   100% {
       transform: translate3d(0, 0, 1px) rotate(360deg);
+  }
+}
+@media (max-width:339px) {
+  .card-container{
+    grid-template-columns: repeat(3,100px) !important;
   }
 }

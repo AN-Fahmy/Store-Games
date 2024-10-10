@@ -23,24 +23,33 @@ export class MemorygameComponent implements OnInit {
     this.initGame()
   }
 
+  values:string[] = []
   initGame(){
-    let values:string[] = []
     if(this.level() === 1){
-      values = ["./assets/images/memorygameImage/8.jpg","./assets/images/memorygameImage/8.jpg","./assets/images/memorygameImage/2.jpg","./assets/images/memorygameImage/2.jpg"]
+      this.values.push("./assets/images/memorygameImage/8.jpg","./assets/images/memorygameImage/8.jpg","./assets/images/memorygameImage/2.jpg","./assets/images/memorygameImage/2.jpg")
+      console.log(this.values);
+
     } else if(this.level() === 2){
-      values = ["./assets/images/memorygameImage/1.webp","./assets/images/memorygameImage/1.webp","./assets/images/memorygameImage/9.webp","./assets/images/memorygameImage/9.webp","./assets/images/memorygameImage/3.jpeg","./assets/images/memorygameImage/3.jpeg","./assets/images/memorygameImage/4.webp","./assets/images/memorygameImage/4.webp"]
+      this.values.push("./assets/images/memorygameImage/1.webp","./assets/images/memorygameImage/1.webp","./assets/images/memorygameImage/9.webp","./assets/images/memorygameImage/9.webp")
+      console.log(this.values);
+
     } else if(this.level() === 3){
-      values = ["./assets/images/memorygameImage/7.jpg","./assets/images/memorygameImage/7.jpg","./assets/images/memorygameImage/2.jpg","./assets/images/memorygameImage/2.jpg","./assets/images/memorygameImage/8.jpg","./assets/images/memorygameImage/8.jpg","./assets/images/memorygameImage/10.jpg","./assets/images/memorygameImage/10.jpg","./assets/images/memorygameImage/5.webp","./assets/images/memorygameImage/5.webp","./assets/images/memorygameImage/6.jpg","./assets/images/memorygameImage/6.jpg"]
+      this.values.push("./assets/images/memorygameImage/3.jpeg","./assets/images/memorygameImage/3.jpeg","./assets/images/memorygameImage/4.webp","./assets/images/memorygameImage/4.webp")
+      console.log(this.values);
+
     } else if(this.level() === 4){
-      values = ["./assets/images/memorygameImage/1.webp","./assets/images/memorygameImage/1.webp","./assets/images/memorygameImage/2.jpg","./assets/images/memorygameImage/2.jpg","./assets/images/memorygameImage/3.jpeg","./assets/images/memorygameImage/3.jpeg","./assets/images/memorygameImage/4.webp","./assets/images/memorygameImage/4.webp","./assets/images/memorygameImage/5.webp","./assets/images/memorygameImage/5.webp","./assets/images/memorygameImage/6.jpg","./assets/images/memorygameImage/6.jpg","./assets/images/memorygameImage/7.jpg","./assets/images/memorygameImage/7.jpg", "./assets/images/memorygameImage/8.jpg","./assets/images/memorygameImage/8.jpg"]
+      this.values.push("./assets/images/memorygameImage/5.webp","./assets/images/memorygameImage/5.webp", "./assets/images/memorygameImage/6.jpg","./assets/images/memorygameImage/6.jpg")
+      console.log(this.values);
+
     } else if(this.level() === 5){
-      values = ["./assets/images/memorygameImage/1.webp","./assets/images/memorygameImage/1.webp","./assets/images/memorygameImage/2.jpg","./assets/images/memorygameImage/2.jpg","./assets/images/memorygameImage/3.jpeg","./assets/images/memorygameImage/3.jpeg","./assets/images/memorygameImage/4.webp","./assets/images/memorygameImage/4.webp","./assets/images/memorygameImage/5.webp","./assets/images/memorygameImage/5.webp","./assets/images/memorygameImage/6.jpg","./assets/images/memorygameImage/6.jpg","./assets/images/memorygameImage/7.jpg","./assets/images/memorygameImage/7.jpg", "./assets/images/memorygameImage/8.jpg","./assets/images/memorygameImage/8.jpg","./assets/images/memorygameImage/9.webp","./assets/images/memorygameImage/9.webp","./assets/images/memorygameImage/10.jpg","./assets/images/memorygameImage/10.jpg"]
+      this.values.push("./assets/images/memorygameImage/7.jpg","./assets/images/memorygameImage/7.jpg","./assets/images/memorygameImage/10.jpg","./assets/images/memorygameImage/10.jpg")
+      console.log(this.values);
     }
-    this.cards.set(this.shuffleCards(values).map((value:any) => ({value, revealed:false})))
+    this.cards.set(this.shuffleCards(this.values).map((value:any) => ({value, revealed:false})))
   }
 
   shuffleCards(arr:any){
-    return arr.sort(() => Math.random() - .7)
+    return arr.sort(() => Math.random() - .5)
   }
 
   revealedCards(index:number){
@@ -95,7 +104,7 @@ export class MemorygameComponent implements OnInit {
           }
           this.initGame()
         },800)
-      } else if(this.level() > 5){
+      } else if(this.level() >= 6){
         alert('Congratulations, Wait For Anthor Levels Soon')
       }
     }
