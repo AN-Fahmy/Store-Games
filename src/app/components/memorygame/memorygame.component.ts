@@ -48,8 +48,18 @@ export class MemorygameComponent implements OnInit {
     this.cards.set(this.shuffleCards(this.values).map((value:any) => ({value, revealed:false})))
   }
 
-  shuffleCards(arr:any){
-    return arr.sort(() => Math.random() - .5)
+  // Simple Shuffle And The most common method
+  // shuffleCards(arr:any){
+  //   return arr.sort(() => Math.random() - .5)
+  // }
+
+  // Fisher-Yates Shuffle
+  shuffleCards(arr: any) {
+    for (let i = arr.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [arr[i], arr[j]] = [arr[j], arr[i]]; // swap
+    }
+    return arr
   }
 
   revealedCards(index:number){
@@ -104,7 +114,7 @@ export class MemorygameComponent implements OnInit {
           }
           this.initGame()
         },800)
-      } else if(this.level() >= 6){
+      } else if(this.level() > 5){
         alert('Congratulations, Wait For Anthor Levels Soon')
       }
     }
