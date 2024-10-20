@@ -1,0 +1,98 @@
+@import url('https://fonts.googleapis.com/css2?family=Cabin:ital,wght@0,400..700;1,400..700&family=Kablammo&display=swap');
+*{
+  font-family: "Cabin", sans-serif;
+  font-weight: 700;
+  transition: all .5s;
+}
+section{
+  background-image: url('../../../assets/images/guessWordImage/62394d753859943e6a1a36443ef78795.gif');
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+h1{
+  font-family: "Kablammo", system-ui;
+  font-size: 60px;
+  text-shadow: 0 0 10px blue,
+              0 0 15px blue,
+              0 0 20px blue,
+              0 0 25px blue;
+  color: #ffffffde;
+}
+.inputs{
+  input{
+    width: 70px;
+    height: 70px;
+    font-size: 60px;
+    text-align: center;
+    border: 1px solid #cccccc8f;
+    border-bottom: 5px solid #333;
+    caret-color: #DC3545;
+    &:focus{
+      outline: 2px solid #888;
+    }
+    &.in-place{
+      background-color: #198754;
+      border: #198754;
+      color: #fff;
+    }
+    &.not-place{
+      background-color: #FFC107;
+      border: #FFC107;
+      color: #fff;
+    }
+    &.not{
+      background-color: #DC3545;
+      border: #DC3545;
+      color: #fff;
+    }
+  }
+}
+.stop-event{
+  pointer-events: none;
+}
+.msg-win{
+  text-shadow: 0 0 10px #198754,0 0 15px #198754,0 0 20px #198754;
+}
+.msg-lose{
+  text-shadow: 0 0 10px #DC3545,0 0 15px #DC3545,0 0 20px #DC3545;
+}
+.rules{
+  .rule{
+    span{
+      width: 30px;
+      height: 30px;
+    }
+  }
+}
+.exit{
+  position: relative;
+  top: 20px;
+}
+
+@media (max-width: 580px) {
+  .inputs{
+    display: block !important;
+    input{
+      font-size: 55px;
+      width: 60px;
+      height: 60px;
+      margin-inline: 5px;
+    }
+  }
+}
+@media (max-width: 498px) {
+  h1{
+    font-size: 33px;
+  }
+  .inputs{
+    display: block !important;
+    input{
+      font-size: 25px;
+      width: 40px;
+      height: 40px;
+      margin-inline: 5px;
+    }
+  }
+}

@@ -1,0 +1,63 @@
+<section class="text-center text-white overflow-x-hidden">
+  <div class="container">
+    <button class="exit btn btn-outline-danger d-flex align-items-center justify-content-center px-2 z-3" routerLink="/home">
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-arrow-bar-left" viewBox="0 0 16 16">
+        <path fill-rule="evenodd" d="M12.5 15a.5.5 0 0 1-.5-.5v-13a.5.5 0 0 1 1 0v13a.5.5 0 0 1-.5.5M10 8a.5.5 0 0 1-.5.5H3.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L3.707 7.5H9.5a.5.5 0 0 1 .5.5"/>
+      </svg>
+      Exit
+    </button>
+
+    <h1 class="animate__animated animate__fadeInDown animate__slow">Guess The Words</h1>
+
+    <div class="row">
+      <div class="col-lg-7 animate__animated animate__fadeInLeft animate__slow">
+        <div class="inputs-container">
+          @for (try of numberOfTries(); track $index) {
+            <div #inputs class="inputs d-flex justify-content-center align-items-center gap-1 my-2">
+              <h5>Try {{$index + 1}} </h5>
+              @for (input of numberOfLetters(); track $index) {
+                <input #input type="text" class="rounded-2 p-1" maxlength="1" (keydown)="moveRightAndLeft($event)" (input)="convertInputValue($event)">
+              }
+            </div>
+          }
+        </div>
+        <div class="btns">
+          <button #btnCheck class="btn btn-success" (click)="gameLogic()">Check Word</button>
+          <button #btnHint class="btn btn-warning m-1" (click)="getHint()"><span>{{numberOfHints}}</span> Hints</button>
+          <button #btnReset class="btn btn-danger" (click)="resetGame()">Reset</button>
+        </div>
+        <div class="msgs my-2 text-white">
+          @if(successWord()){
+            <h4 class="msg-win">{{msgWin()}}</h4>
+          } @else {
+            <h4 class="msg-lose">{{msgLose()}}</h4>
+          }
+        </div>
+      </div>
+
+      <div class="col-lg-5 animate__animated animate__fadeInRight animate__slow">
+        <div class="rules-container p-3">
+          <h1>Key Color</h1>
+          <div class="rules d-flex flex-column gap-3 mt-4">
+            <div class="rule d-flex justify-content-start align-items-center gap-2">
+              <span class="bg-success rounded-circle"></span>
+              <h5>Letter Is Right And In Place</h5>
+            </div>
+
+            <div class="rule d-flex justify-content-start align-items-center gap-2">
+              <span class="bg-warning rounded-circle"></span>
+              <h5>Letter Is Right But Not in Place</h5>
+            </div>
+
+            <div class="rule d-flex justify-content-start align-items-center gap-2">
+              <span class="bg-danger rounded-circle"></span>
+              <h5>Letter Is Wrong And Not Exists In Word</h5>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

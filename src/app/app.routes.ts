@@ -6,5 +6,6 @@ export const routes: Routes = [
   {path:'home',component:HomeComponent, title:'Home'},
   {path:'tiktactoe', loadComponent:()=>import('./components/tiktactoe/tiktactoe.component').then(c => c.TiktactoeComponent), title:"Tik Tac Toe"},
   {path:'memorygame', loadComponent:()=>import('./components/memorygame/memorygame.component').then(c => c.MemorygameComponent), title:"Memory Game"},
+  {path:'guessword', loadComponent:()=> import('./components/guesstheword/guesstheword.component').then(c => c.GuessthewordComponent), title:"Guess The Word" },
   {path:'**', loadComponent:()=> import('./components/notfound/notfound.component').then(c => c.NotfoundComponent), title:'Not Found'}
 ];
